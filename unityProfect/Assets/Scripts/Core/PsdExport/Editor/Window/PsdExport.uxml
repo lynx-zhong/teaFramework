@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/Core/CodeGenerate/Editor/a.uss?fileID=7433441132597879392&amp;guid=abdb146603c45ea4789a3f19b812d340&amp;type=3#a" />
+    <ui:VisualElement name="psdRoot" style="opacity: 1;">
+        <ui:VisualElement name="workspaceSelectNode" style="flex-direction: row; justify-content: space-between; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+            <ui:Label display-tooltip-when-elided="true" name="artWorkspacePathLable" text="美术目录" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+            <ui:VisualElement name="right" style="flex-direction: row;">
+                <ui:Button text="选择美术目录" display-tooltip-when-elided="true" name="artWorkspaceSelectButton" />
+                <ui:Button text="更新美术目录svn" display-tooltip-when-elided="true" name="refreshSvnButton" style="white-space: nowrap;" />
+                <ui:Button text="同步icon目录" display-tooltip-when-elided="true" name="syncIcon" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="folderNode" style="flex-direction: column; justify-content: space-between; margin-top: 3px;">
+            <ui:VisualElement name="searchFolder">
+                <ui:TextField picking-mode="Ignore" label="搜索Psd文件夹目录：" name="folderSearchField" />
+            </ui:VisualElement>
+            <ui:Foldout text="目录列表" name="folderList" style="padding-top: 5px; flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="exportNode" style="justify-content: flex-start; padding-top: 10px;">
+            <ui:Label text="当前的文件：" display-tooltip-when-elided="true" name="curPsdFolderPath" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+            <ui:Button text="导出" display-tooltip-when-elided="true" name="exportButton" style="width: 80px; height: 30px; margin-left: 3px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-color: rgb(27, 99, 36);" />
+            <ui:TextField picking-mode="Ignore" label="搜索Xml文件：" name="xmlSearch" />
+            <ui:VisualElement name="itemsParent" style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-color: rgb(70, 68, 68); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,164 @@
+/*Your styles*/
+
+ body {
+    margin: 10px;
+}
+
+
+#content {
+    margin-right:auto;
+    margin-left:auto;
+    vertical-align:middle;
+    width:100%;
+}
+
+
+#btn_output{
+    width: 100%;
+}
+#btn_ArtStatic{
+    width: 100%;
+}
+#btn_Static{
+    width: 100%;
+}
+#btn_9S{
+    width: 100%;
+}
+#btn_Texture{
+    width: 100%;
+}
+#btn_LeftHalf{
+    width: 100%;
+}
+#btn_BottomHalf{
+    width: 100%;
+}
+#btn_Quarter{
+    width: 100%;
+}
+#btn_Common{
+    width: 100%;
+}
+#btn_Global{
+    width: 100%;
+}
+#btn_Button{
+    width: 75%;
+}
+#btn_Normal{
+    width: 100%;
+}
+#btn_Pressed{
+    width: 100%;
+}
+#btn_HighLighted{
+    width: 100%;
+}
+#btn_Disabled{
+    width: 100%;
+}
+#btn_ScrollView{
+    width: 75%;
+}
+#btn_H{
+    width: 100%;
+}
+#btn_V{
+    width: 100%;
+}
+#btn_Size{
+    width: 100%;
+}
+#btn_LE{
+    width: 100%;
+}
+#btn_Slider{
+    width: 75%;
+}
+#btn_L{
+    width: 100%;
+}
+#btn_R{
+    width: 100%;
+}
+#btn_T{
+    width: 100%;
+}
+#btn_B{
+    width: 100%;
+}
+#btn_Size2{
+    width: 100%;
+}
+#btn_Bg{
+    width: 100%;
+}
+#btn_Fill{
+    width: 100%;
+}
+#btn_Handle{
+    width: 100%;
+}
+#btn_Toggle{
+    width: 75%;
+}
+#btn_Background{
+    width: 100%;
+}
+#btn_Checkmark{
+    width: 100%;
+}
+#btn_TabGroup{
+    width: 75%;
+}
+#btn_Tab{
+    width: 100%;
+}
+#btn_Page{
+    width: 100%;
+}
+#btn_TabSel{
+    width: 100%;
+}
+#btn_TabUnSel{
+    width: 100%;
+}
+
+.h1{
+    height:20px;
+    font-family:inherit;
+    color:inherit;
+    font-size:inherit;
+}
+
+
+/*
+Those classes will be edited at runtime with values specified
+by the settings of the CC application
+*/
+.hostFontColor{}
+.hostFontFamily{}
+.hostFontSize{}
+
+/*font family, color and size*/
+.hostFont{}
+/*background color*/
+.hostBgd{}
+/*lighter background color*/
+.hostBgdLight{}
+/*darker background color*/
+.hostBgdDark{}
+/*background color and font*/
+.hostElt{}
+
+
+.hostButton{
+    border:1px solid;
+    border-radius:2px;
+    height:20px;
+    vertical-align:bottom;
+    font-family:inherit;
+    color:inherit;
+    font-size:inherit;
+}

@@ -2,3 +2,6 @@
 /unityProfect/Logs
 /unityProfect/Temp
 /unityProfect/.vsconfig
+/unityProfect/UserSettings
+*.vscode
+/unityProfect/UIElementsSchema
