@@ -1,0 +1,9 @@
+using UnityEngine;
+
+public class CodeGenerate
+{
+
+    public GameObject CodeGenerateGameObject
+    public GameObject Text (TMP)GameObject
+    public GameObject ButtonGameObject
+}

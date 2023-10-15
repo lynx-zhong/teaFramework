@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using System;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using UnityEditorInternal;
 
 [CustomEditor(typeof(RectTransform)), CanEditMultipleObjects]
 public class RectTransformInspector : Editor
@@ -18,6 +19,9 @@ public class RectTransformInspector : Editor
     private void OnEnable()
     {
         CreateEditorInstance();
+
+        //
+        CodeGenerateOnEnable();
     }
 
     public override void OnInspectorGUI()
@@ -26,6 +30,8 @@ public class RectTransformInspector : Editor
             instance.OnInspectorGUI();
 
         ShowNodeBing();
+
+        CheckAndSavePrefabChanges();
     }
 
     private void CreateEditorInstance()
@@ -60,19 +66,44 @@ public class RectTransformInspector : Editor
 
     #region 代码节点绑定
 
+    ReorderableList reorderableList;
+
+    void CodeGenerateOnEnable()
+    {
+        InitReorderableList();
+    }
+
+    void InitReorderableList()
+    {
+        CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
+        if (generateNodeBind == null)
+            return;
+
+        reorderableList = new ReorderableList(generateNodeBind.GetExportComponents(), typeof(ComponentStruct), true, true, true, true)
+        {
+            elementHeight = 20,
+            drawHeaderCallback = DrawHeader,
+            drawElementCallback = DrawElement,
+            onAddCallback = DrawOnAddCallBack,
+            onRemoveCallback = DrawOnRemoveCallBack
+        };
+    }
+
     void ShowNodeBing()
     {
         //
         if (Application.isPlaying)
             return;
 
-
         //
         serializedObject.Update();
-        GUILayout.Space(15);
+        GUILayout.Space(12);
+
+        //
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("导出"))
             OnExportButtonClick();
+
         if (GUILayout.Button("禁用导出"))
             OnBanExportButtonClick();
         GUILayout.EndHorizontal();
@@ -81,36 +112,87 @@ public class RectTransformInspector : Editor
         CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
         if (generateNodeBind != null)
         {
-            GUILayout.Space(3);
-            GUILayout.Label("--------------------------------------------- components ---------------------------------------------", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter });
+            if (reorderableList == null)
+                InitReorderableList();
 
             //
-            var exportComponents = generateNodeBind.GetExportComponents();
-            var allComponentStrings = generateNodeBind.GetElementAllComponentsStringList();
-            for (int i = 0; i < exportComponents.Count; i++)
+            GUILayout.Space(3);
+            generateNodeBind.isRootNode = GUILayout.Toggle(generateNodeBind.isRootNode, "根节点");
+
+            //
+            if (generateNodeBind.isRootNode)
             {
-                ShowComponent(generateNodeBind, exportComponents, allComponentStrings, i);
+                GUILayout.Space(3);
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Layer Select ：", new GUILayoutOption[] { GUILayout.MaxWidth(100) });
+                generateNodeBind.selectedLayerIndex = EditorGUILayout.Popup(generateNodeBind.selectedLayerIndex, generateNodeBind.layerStringArr, new GUILayoutOption[] { GUILayout.MaxWidth(200) });
+                GUILayout.EndHorizontal();
             }
 
-            // GUI.color = Color.green;
-            // GUIStyle gUIStyle = new GUIStyle();
-            // gUIStyle.name
-            if (GUILayout.Button("添加组件", new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter,name = "ShurikenPlus" }))
-            {
-                generateNodeBind.AddExportComponent();
-            }
-            // GUI.color = Color.white;
+            //
+            GUILayout.Space(5);
+            reorderableList.DoLayoutList();
 
             //
             GUILayout.Space(10);
-            // GUI.color = Color.green;
-            if (GUILayout.Button("导出", "flow node hex 3", new GUILayoutOption[] { GUILayout.MinHeight(30) }))
+            if (generateNodeBind.isRootNode)
             {
-
+                if (GUILayout.Button("导出"))
+                    CodeGenerateFunc.Generate(target as Transform);
             }
-            // GUI.color = Color.white;
+
         }
+
+        //
         serializedObject.ApplyModifiedProperties();
+    }
+
+    private void DrawHeader(Rect rect)
+    {
+        EditorGUI.LabelField(rect, "Code Generate Node");
+    }
+
+    private void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
+    {
+        CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
+        if (generateNodeBind == null)
+            return;
+
+        List<ComponentStruct> componentStructs = generateNodeBind.GetExportComponents();
+        List<string> allComponentStrings = generateNodeBind.GetElementAllComponentsStringList();
+        ComponentStruct componentStruct = componentStructs[index];
+
+        //
+        componentStruct.nodeVariableName = EditorGUI.TextField(new Rect(rect.x, rect.y, rect.width / 2, rect.height - 4), componentStruct.nodeVariableName);
+        int enumIndex = EditorGUI.Popup(new Rect(rect.x + rect.width / 2 + 5, rect.y, rect.width / 2, rect.height), componentStruct.selectedComponentIndex, allComponentStrings.ToArray());
+        if (enumIndex != componentStruct.selectedComponentIndex)
+        {
+            componentStruct.selectedComponentIndex = enumIndex;
+            componentStruct.nodeVariableName = string.Format("{0}{1}", target.name, allComponentStrings[componentStruct.selectedComponentIndex]);
+        }
+
+        componentStruct.componentStr = allComponentStrings[componentStruct.selectedComponentIndex];
+
+        //
+        componentStructs[index] = componentStruct;
+    }
+
+    private void DrawOnRemoveCallBack(ReorderableList list)
+    {
+        CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
+        if (generateNodeBind == null)
+            return;
+
+        generateNodeBind.RemoveExportComponent(list.index);
+    }
+
+    private void DrawOnAddCallBack(ReorderableList list)
+    {
+        CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
+        if (generateNodeBind == null)
+            return;
+
+        generateNodeBind.AddExportComponent();
     }
 
     void OnExportButtonClick()
@@ -123,35 +205,12 @@ public class RectTransformInspector : Editor
         DestroyImmediate(target.GetComponent<CodeGenerateNodeBind>());
     }
 
-    void ShowComponent(CodeGenerateNodeBind generateNodeBind, List<ComponentStruct> exportComponents, List<string> allComponentStrings, int i)
+    private void CheckAndSavePrefabChanges()
     {
-        Transform targetTran = target as Transform;
-
-        //
-        GUILayout.Space(5);
-        GUILayout.BeginHorizontal();
-
-        //
-        ComponentStruct componentStruct = exportComponents[i];
-        componentStruct.nodeVariableName = GUILayout.TextField(componentStruct.nodeVariableName);
-
-        int enumIndex = EditorGUILayout.Popup(componentStruct.selectedComponentIndex, allComponentStrings.ToArray(), "DropDown", new GUILayoutOption[] { GUILayout.MaxWidth(150) });
-        if (enumIndex != componentStruct.selectedComponentIndex)
+        if (GUI.changed && !Application.isPlaying)
         {
-            componentStruct.selectedComponentIndex = enumIndex;
-            componentStruct.nodeVariableName = string.Format("{0}{1}", targetTran.name, allComponentStrings[enumIndex]);
-        }
 
-        if (GUILayout.Button("删除", new GUILayoutOption[] { GUILayout.MaxWidth(60) }))
-        {
-            generateNodeBind.RemoveExportComponent(i);
-            serializedObject.ApplyModifiedProperties();
-            return;
         }
-        GUILayout.EndHorizontal();
-
-        exportComponents[i] = componentStruct;
     }
-
     #endregion
 }

@@ -9,11 +9,26 @@ using UnityEngine;
 
 namespace CodeGenetate
 {
+    [Serializable]
     [DisallowMultipleComponent]
     public class CodeGenerateNodeBind : MonoBehaviour
     {
+        public int Aa = 10;
+
         const string GameObejctName = "GameObject";
-        List<ComponentStruct> exportComponents;
+        public List<ComponentStruct> exportComponents;
+
+        [HideInInspector]
+        public int selectedLayerIndex = 1;
+
+        [HideInInspector]
+        public string[] layerStringArr = new string[]
+        {
+            "BackgroundLayer","NarmalLayer","InfoLayer","TopLayer"
+        };
+
+        [HideInInspector]
+        public bool isRootNode = false;
 
         public List<string> GetElementAllComponentsStringList()
         {
@@ -54,7 +69,8 @@ namespace CodeGenetate
         {
             ComponentStruct componentStruct = new ComponentStruct()
             {
-                nodeVariableName = string.Format("{0}{1}", gameObject.name, "GameObject"),
+                nodeVariableName = string.Format("{0}{1}",gameObject.name,GameObejctName),
+                componentStr = GameObejctName,
                 selectedComponentIndex = 0,
             };
 
@@ -64,11 +80,6 @@ namespace CodeGenetate
         public void RemoveExportComponent(int index)
         {
             exportComponents.RemoveAt(index);
-        }
-
-        public void ExportCode()
-        {
-            
         }
     }
 
