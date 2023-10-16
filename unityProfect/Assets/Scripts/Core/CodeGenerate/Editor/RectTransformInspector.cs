@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEditorInternal;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(RectTransform)), CanEditMultipleObjects]
 public class RectTransformInspector : Editor
@@ -30,8 +32,6 @@ public class RectTransformInspector : Editor
             instance.OnInspectorGUI();
 
         ShowNodeBing();
-
-        CheckAndSavePrefabChanges();
     }
 
     private void CreateEditorInstance()
@@ -96,7 +96,6 @@ public class RectTransformInspector : Editor
             return;
 
         //
-        serializedObject.Update();
         GUILayout.Space(12);
 
         //
@@ -112,6 +111,9 @@ public class RectTransformInspector : Editor
         CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
         if (generateNodeBind != null)
         {
+            generateNodeBind.TestString = GUILayout.TextField(generateNodeBind.TestString);
+
+            serializedObject.Update();
             if (reorderableList == null)
                 InitReorderableList();
 
@@ -141,10 +143,10 @@ public class RectTransformInspector : Editor
                     CodeGenerateFunc.Generate(target as Transform);
             }
 
+            //
+            CheckAndSavePrefabChanges();
+            serializedObject.ApplyModifiedProperties();
         }
-
-        //
-        serializedObject.ApplyModifiedProperties();
     }
 
     private void DrawHeader(Rect rect)
@@ -209,7 +211,8 @@ public class RectTransformInspector : Editor
     {
         if (GUI.changed && !Application.isPlaying)
         {
-
+            GameObject targetObject = (target as Transform).gameObject;
+            EditorUtility.SetDirty(targetObject);
         }
     }
     #endregion

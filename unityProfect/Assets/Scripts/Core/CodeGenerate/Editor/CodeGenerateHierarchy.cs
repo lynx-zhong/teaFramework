@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Experimental.SceneManagement;
+using UnityEditor.SceneManagement;
 
 namespace CodeGenetate
 {
@@ -19,9 +23,9 @@ namespace CodeGenetate
             // if (!PrefabUtility.IsPartOfAnyPrefab(Selection.activeGameObject))
             // {
             //     Debug.Log("------------>  IsPartOfAnyPrefab");
-                // 当退出Prefab编辑模式时，Selection.activeGameObject将不再是Prefab的一部分
-                // 所以我们可以在这里触发保存Prefab的操作
-                // SavePrefab();
+            // 当退出Prefab编辑模式时，Selection.activeGameObject将不再是Prefab的一部分
+            // 所以我们可以在这里触发保存Prefab的操作
+            // SavePrefab();
             // }
         }
 

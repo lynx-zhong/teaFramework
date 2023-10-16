@@ -214,6 +214,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Aa: 10
+  exportComponents: []
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  isRootNode: 0
 --- !u!1 &211653212
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +281,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Aa: 10
+  exportComponents: []
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  isRootNode: 0
 --- !u!1 &460842859
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +348,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Aa: 10
+  exportComponents: []
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  isRootNode: 0
 --- !u!1 &1425308067
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +460,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Aa: 10
+  exportComponents: []
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  isRootNode: 0
 --- !u!1 &1676656196
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,5 +17,4 @@ MonoBehaviour:
   UnityCommonPngFolder: Assets/AssetsPackage/UIImage/UICommon
   SpriteAtlasFolder: Assets/AssetsPackage/UIAtlas
   UnityIconFolder: Assets/AssetsPackage/UIIcon
-  CommonPngNameStart: ui_common
   FontPath: Assets/Font

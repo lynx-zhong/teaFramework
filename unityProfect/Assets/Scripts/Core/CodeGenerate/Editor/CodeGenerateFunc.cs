@@ -8,7 +8,6 @@ using UnityEngine;
 namespace CodeGenetate
 {
     // TODO 根节点添加导出标记不合适
-    // 初始名字不正确
     // 只能在 Project文件夹下导出
     // 文件存在 改文件代码
 
@@ -21,7 +20,7 @@ namespace CodeGenetate
         {
             List<CodeGenerateNodeBind> codeGenerateNodes = GetAllExportInfo(exportGoTransform);
             string goPath = AssetDatabase.GetAssetPath(exportGoTransform);
-            if (goPath == null)
+            if (string.IsNullOrEmpty(goPath))
             {
                 Debug.LogError("只能在 project 文件夹下导出");
                 return;
