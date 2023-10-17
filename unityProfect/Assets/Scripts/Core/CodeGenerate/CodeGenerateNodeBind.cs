@@ -9,13 +9,14 @@ using UnityEngine;
 
 namespace CodeGenetate
 {
+    [Serializable]
     [DisallowMultipleComponent]
     public class CodeGenerateNodeBind : MonoBehaviour
     {
         public string TestString = "10";
-
         const string GameObejctName = "GameObject";
-        List<ComponentStruct> exportComponents;
+
+        public List<ComponentStruct> exportComponents;
 
         [HideInInspector]
         public int selectedLayerIndex = 1;

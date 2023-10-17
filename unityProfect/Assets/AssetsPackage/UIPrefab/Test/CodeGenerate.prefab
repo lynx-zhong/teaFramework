@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4697535047756282156}
   - component: {fileID: 1339132869802718752}
   - component: {fileID: 6753690591220180264}
+  - component: {fileID: 7799183991733169518}
   m_Layer: 5
   m_Name: top
   m_TagString: Untagged
@@ -77,6 +78,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7799183991733169518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205244624693529667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestString: 10
+  exportComponents:
+  - nodeVariableName: topGameObject
+    nodeOldVarialeName: 
+    componentStr: Image
+    selectedComponentIndex: 3
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  isRootNode: 0
 --- !u!1 &3226812843005200125
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestNum: 10
+  TestString: 1099
+  exportComponents:
+  - nodeVariableName: 222444
+    nodeOldVarialeName: 
+    componentStr: CanvasRenderer
+    selectedComponentIndex: 2
   selectedLayerIndex: 1
   layerStringArr:
   - BackgroundLayer
@@ -479,6 +510,7 @@ GameObject:
   - component: {fileID: 4686628917094073445}
   - component: {fileID: 1256232914141195816}
   - component: {fileID: 7351198142963445795}
+  - component: {fileID: 3730023858072243954}
   m_Layer: 5
   m_Name: CodeGenerate
   m_TagString: Untagged
@@ -560,3 +592,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &3730023858072243954
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962099901354565365}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
