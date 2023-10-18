@@ -13,8 +13,8 @@ namespace CodeGenetate
 
             target.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
 
-            // CodeGenerateNodeBind codeGenerateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
-            // codeGenerateNodeBind.TestString = "555";
+            CodeGenerateNodeBind codeGenerateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
+            codeGenerateNodeBind.TestString = "555";
 
             // SerializedProperty serializedProperty = target
         }

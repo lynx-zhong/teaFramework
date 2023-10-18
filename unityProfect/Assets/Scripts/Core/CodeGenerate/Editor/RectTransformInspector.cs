@@ -95,6 +95,9 @@ public class RectTransformInspector : Editor
         if (Application.isPlaying)
             return;
 
+
+
+
         //
         GUILayout.Space(12);
 
@@ -111,9 +114,10 @@ public class RectTransformInspector : Editor
         CodeGenerateNodeBind generateNodeBind = target.GetComponent<CodeGenerateNodeBind>();
         if (generateNodeBind != null)
         {
+            serializedObject.Update();
+
             generateNodeBind.TestString = GUILayout.TextField(generateNodeBind.TestString);
 
-            serializedObject.Update();
             if (reorderableList == null)
                 InitReorderableList();
 
@@ -145,8 +149,11 @@ public class RectTransformInspector : Editor
 
             //
             CheckAndSavePrefabChanges();
+
+
             serializedObject.ApplyModifiedProperties();
         }
+
     }
 
     private void DrawHeader(Rect rect)

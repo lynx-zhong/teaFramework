@@ -92,10 +92,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestString: 10
   exportComponents:
-  - nodeVariableName: topGameObject
+  - nodeVariableName: top
     nodeOldVarialeName: 
-    componentStr: Image
-    selectedComponentIndex: 3
+    componentStr: RectTransform
+    selectedComponentIndex: 1
   selectedLayerIndex: 1
   layerStringArr:
   - BackgroundLayer
@@ -450,10 +450,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestString: 1099
   exportComponents:
-  - nodeVariableName: 222444
+  - nodeVariableName: 56
     nodeOldVarialeName: 
-    componentStr: CanvasRenderer
-    selectedComponentIndex: 2
+    componentStr: RectTransform
+    selectedComponentIndex: 1
   selectedLayerIndex: 1
   layerStringArr:
   - BackgroundLayer
