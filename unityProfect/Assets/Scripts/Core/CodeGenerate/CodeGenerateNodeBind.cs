@@ -62,7 +62,7 @@ namespace CodeGenetate
         {
             ComponentStruct componentStruct = new ComponentStruct()
             {
-                NodeVariableName = string.Format("{0}{1}", gameObject.name, typeof(GameObject).Name),
+                VariableName = string.Format("{0}{1}", gameObject.name, typeof(GameObject).Name),
                 SelectedComponentIndex = 0,
                 ComponentType = typeof(GameObject),
             };
@@ -79,7 +79,7 @@ namespace CodeGenetate
     [Serializable]
     public class ComponentStruct
     {
-        public string NodeVariableName;
+        public string VariableName;
         public string NodeOldVarialeName;
 
         [HideInInspector]

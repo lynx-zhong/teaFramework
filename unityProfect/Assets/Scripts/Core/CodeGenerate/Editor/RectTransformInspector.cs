@@ -170,12 +170,12 @@ public class RectTransformInspector : Editor
         ComponentStruct componentStruct = componentStructs[index];
 
         //
-        componentStruct.NodeVariableName = EditorGUI.TextField(new Rect(rect.x, rect.y, rect.width / 2, rect.height - 4), componentStruct.NodeVariableName);
+        componentStruct.VariableName = EditorGUI.TextField(new Rect(rect.x, rect.y, rect.width / 2, rect.height - 4), componentStruct.VariableName);
         int enumIndex = EditorGUI.Popup(new Rect(rect.x + rect.width / 2 + 5, rect.y, rect.width / 2, rect.height), componentStruct.SelectedComponentIndex, GetComponentsString(components));
         if (enumIndex != componentStruct.SelectedComponentIndex)
         {
             componentStruct.SelectedComponentIndex = enumIndex;
-            componentStruct.NodeVariableName = string.Format("{0}{1}", target.name, components[componentStruct.SelectedComponentIndex].Name);
+            componentStruct.VariableName = string.Format("{0}{1}", target.name, components[componentStruct.SelectedComponentIndex].Name);
         }
 
         componentStruct.ComponentType = components[componentStruct.SelectedComponentIndex];

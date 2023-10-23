@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CodeGenetate
 {
-    // [CustomEditor(typeof(CodeGenerateNodeBind))]
+    [CustomEditor(typeof(CodeGenerateNodeBind))]
     public class CodeGenerateInspector : Editor
     {
         public override void OnInspectorGUI()
@@ -12,8 +12,6 @@ namespace CodeGenetate
             base.OnInspectorGUI();
 
             target.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
-
-            // SerializedProperty serializedProperty = target
         }
     }
 }
