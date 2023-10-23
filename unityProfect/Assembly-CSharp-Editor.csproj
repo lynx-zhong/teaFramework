@@ -74,7 +74,6 @@
     <Compile Include="Assets\Scripts\Core\PsdExport\Editor\XmlSerializer\PsdEnumDefine.cs" />
     <Compile Include="Assets\Scripts\Core\PsdExport\Editor\XmlSerializer\PsdLayerSerializer.cs" />
     <Compile Include="Assets\Scripts\Core\PsdExport\Editor\ExportCtrl\PsdExportButton.cs" />
-    <Compile Include="Assets\Scripts\GameLogic\UI\Editor\Inspector.cs" />
     <Compile Include="Assets\Scripts\Core\CodeGenerate\Editor\RectTransformInspector.cs" />
   </ItemGroup>
   <ItemGroup>

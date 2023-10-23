@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using System;
 using UnityEngine;
+using JetBrains.Annotations;
 
 namespace CodeGenetate
 {
@@ -13,10 +14,8 @@ namespace CodeGenetate
     [DisallowMultipleComponent]
     public class CodeGenerateNodeBind : MonoBehaviour
     {
-        public string TestString = "10";
-        const string GameObejctName = "GameObject";
-
-        public List<ComponentStruct> exportComponents;
+        [HideInInspector]
+        public bool isRootNode = false;
 
         [HideInInspector]
         public int selectedLayerIndex = 1;
@@ -27,32 +26,26 @@ namespace CodeGenetate
             "BackgroundLayer","NarmalLayer","InfoLayer","TopLayer"
         };
 
-        [HideInInspector]
-        public bool isRootNode = false;
 
-        public List<string> GetElementAllComponentsStringList()
+        public List<ComponentStruct> exportComponents;
+
+        public List<Type> GetElementComponents()
         {
-            Component[] allComponent = gameObject.GetComponents<Component>();
-            List<string> tempCompontNames = new List<string>
+            List<Type> allComponents = new List<Type>
             {
-                GameObejctName,
+                typeof(GameObject),
             };
 
-            foreach (Component item in allComponent)
+            Component[] getComponents = gameObject.GetComponents<Component>();
+            for (int i = 0; i < getComponents.Length; i++)
             {
-                string compontType = Regex.Replace(item.ToString(), @"(.*\()(.*)(\).*)", "$2");
-                string[] temp = compontType.Split('.');
-
-                if (temp.Length > 0)
-                    compontType = temp[temp.Length - 1];
-
-                if (compontType != "CodeGenerateNodeBind")
+                if (getComponents[i].GetType() != typeof(CodeGenerateNodeBind))
                 {
-                    tempCompontNames.Add(compontType);
+                    allComponents.Add(getComponents[i].GetType());
                 }
             }
 
-            return tempCompontNames;
+            return allComponents;
         }
 
         public List<ComponentStruct> GetExportComponents()
@@ -69,9 +62,9 @@ namespace CodeGenetate
         {
             ComponentStruct componentStruct = new ComponentStruct()
             {
-                nodeVariableName = string.Format("{0}{1}",gameObject.name,GameObejctName),
-                componentStr = GameObejctName,
-                selectedComponentIndex = 0,
+                NodeVariableName = string.Format("{0}{1}", gameObject.name, typeof(GameObject).Name),
+                SelectedComponentIndex = 0,
+                ComponentType = typeof(GameObject),
             };
 
             exportComponents.Add(componentStruct);
@@ -86,10 +79,13 @@ namespace CodeGenetate
     [Serializable]
     public class ComponentStruct
     {
-        public string nodeVariableName;
-        public string nodeOldVarialeName;
-        public string componentStr;
-        public int selectedComponentIndex;
+        public string NodeVariableName;
+        public string NodeOldVarialeName;
+
+        [HideInInspector]
+        public int SelectedComponentIndex;
+
+        public Type ComponentType;
     }
 }
 

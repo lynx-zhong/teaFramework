@@ -116,8 +116,6 @@ public class RectTransformInspector : Editor
         {
             serializedObject.Update();
 
-            generateNodeBind.TestString = GUILayout.TextField(generateNodeBind.TestString);
-
             if (reorderableList == null)
                 InitReorderableList();
 
@@ -168,22 +166,34 @@ public class RectTransformInspector : Editor
             return;
 
         List<ComponentStruct> componentStructs = generateNodeBind.GetExportComponents();
-        List<string> allComponentStrings = generateNodeBind.GetElementAllComponentsStringList();
+        List<Type> components = generateNodeBind.GetElementComponents();
         ComponentStruct componentStruct = componentStructs[index];
 
         //
-        componentStruct.nodeVariableName = EditorGUI.TextField(new Rect(rect.x, rect.y, rect.width / 2, rect.height - 4), componentStruct.nodeVariableName);
-        int enumIndex = EditorGUI.Popup(new Rect(rect.x + rect.width / 2 + 5, rect.y, rect.width / 2, rect.height), componentStruct.selectedComponentIndex, allComponentStrings.ToArray());
-        if (enumIndex != componentStruct.selectedComponentIndex)
+        componentStruct.NodeVariableName = EditorGUI.TextField(new Rect(rect.x, rect.y, rect.width / 2, rect.height - 4), componentStruct.NodeVariableName);
+        int enumIndex = EditorGUI.Popup(new Rect(rect.x + rect.width / 2 + 5, rect.y, rect.width / 2, rect.height), componentStruct.SelectedComponentIndex, GetComponentsString(components));
+        if (enumIndex != componentStruct.SelectedComponentIndex)
         {
-            componentStruct.selectedComponentIndex = enumIndex;
-            componentStruct.nodeVariableName = string.Format("{0}{1}", target.name, allComponentStrings[componentStruct.selectedComponentIndex]);
+            componentStruct.SelectedComponentIndex = enumIndex;
+            componentStruct.NodeVariableName = string.Format("{0}{1}", target.name, components[componentStruct.SelectedComponentIndex].Name);
         }
 
-        componentStruct.componentStr = allComponentStrings[componentStruct.selectedComponentIndex];
+        componentStruct.ComponentType = components[componentStruct.SelectedComponentIndex];
 
         //
         componentStructs[index] = componentStruct;
+    }
+
+    string[] GetComponentsString(List<Type> components)
+    {
+        List<string> strings = new List<string>();
+
+        for (int i = 0; i < components.Count; i++)
+        {
+            strings.Add(components[i].Name);
+        }
+
+        return strings.ToArray();
     }
 
     private void DrawOnRemoveCallBack(ReorderableList list)

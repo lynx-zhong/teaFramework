@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class CodeGenerate
 {
-
-    public Button CodeGenerateButton
-    public GameObject Text (TMP)GameObject
-    public GameObject 22GameObject
+    // file auto generate start
+    public CanvasGroup CodeGenerateCanvasGroup
+    // file auto generate end
 }
