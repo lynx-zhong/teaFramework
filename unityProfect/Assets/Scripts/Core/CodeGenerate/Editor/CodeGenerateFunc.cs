@@ -64,7 +64,17 @@ namespace CodeGenetate
 
             CodeGenerateNodeBind codeGenerate = exportTrans.GetComponent<CodeGenerateNodeBind>();
             if (codeGenerate)
+            {
+                for (int i = 0; i < codeGenerate.exportComponents.Count; i++)
+                {
+                    if (codeGenerate.exportComponents[i].ComponentType == null)
+                    {
+                        List<Type> types = codeGenerate.GetElementComponents();
+                        codeGenerate.exportComponents[i].ComponentType = types[codeGenerate.exportComponents[i].SelectedComponentIndex];
+                    }
+                }
                 codeGenerates.Add(codeGenerate);
+            }
 
             for (int i = 0; i < exportTrans.transform.childCount; i++)
             {

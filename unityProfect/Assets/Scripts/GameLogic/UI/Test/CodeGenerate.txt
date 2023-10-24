@@ -3,6 +3,8 @@ using UnityEngine;
 public class CodeGenerate
 {
     // file auto generate start
-    public CanvasGroup CodeGenerateCanvasGroup
+    public GameObject CodeGenerateGameObject
+    public RectTransform 3RectTransform
+    public Image 3Image
     // file auto generate end
 }

@@ -97,9 +97,9 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - NodeVariableName: 3CanvasRenderer
+  - NodeVariableName: 3RectTransform
     NodeOldVarialeName: 
-    SelectedComponentIndex: 2
+    SelectedComponentIndex: 1
   - NodeVariableName: 3Image
     NodeOldVarialeName: 
     SelectedComponentIndex: 3
