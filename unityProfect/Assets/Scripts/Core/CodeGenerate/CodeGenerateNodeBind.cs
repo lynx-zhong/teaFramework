@@ -1,12 +1,8 @@
 #if UNITY_EDITOR 
 
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Unity.VisualScripting;
 using System;
 using UnityEngine;
-using JetBrains.Annotations;
 
 namespace CodeGenetate
 {

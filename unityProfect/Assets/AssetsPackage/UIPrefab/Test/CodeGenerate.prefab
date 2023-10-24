@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3606579460267515630}
   - component: {fileID: 4256892738745881449}
   - component: {fileID: 581562006012026898}
-  - component: {fileID: 8340817844689431331}
+  - component: {fileID: 8236389415182670996}
   m_Layer: 5
-  m_Name: Button
+  m_Name: asd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8340817844689431331
+--- !u!114 &8236389415182670996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: AaaButton
+  - VariableName: asdButton
     NodeOldVarialeName: 
     SelectedComponentIndex: 4
 --- !u!1 &624443670620998226
@@ -428,9 +428,9 @@ GameObject:
   - component: {fileID: 3462914231763289233}
   - component: {fileID: 2356941306804606573}
   - component: {fileID: 4734109281239362084}
-  - component: {fileID: 1788651984587937545}
+  - component: {fileID: 3715619521202634714}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: dsafff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1788651984587937545
+--- !u!114 &3715619521202634714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -559,7 +559,7 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: BbbButton
+  - VariableName: dsafffButton
     NodeOldVarialeName: 
     SelectedComponentIndex: 4
 --- !u!1 &5447619386824277544
@@ -573,9 +573,9 @@ GameObject:
   - component: {fileID: 9082768326150418594}
   - component: {fileID: 1509698585949981936}
   - component: {fileID: 8663921194589667148}
-  - component: {fileID: 3124107584425030253}
+  - component: {fileID: 1426694714374337358}
   m_Layer: 5
-  m_Name: 3
+  m_Name: hah
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3124107584425030253
+--- !u!114 &1426694714374337358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRootNode: 1
+  isRootNode: 0
   selectedLayerIndex: 1
   layerStringArr:
   - BackgroundLayer
@@ -659,12 +659,12 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: aaGameObject
+  - VariableName: hahGameObject
     NodeOldVarialeName: 
     SelectedComponentIndex: 0
-  - VariableName: sddRectTransform
+  - VariableName: hahImage
     NodeOldVarialeName: 
-    SelectedComponentIndex: 1
+    SelectedComponentIndex: 3
 --- !u!1 &6962099901354565365
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +792,6 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: CodeGenerateCanvasRenderer
+  - VariableName: Code2233563GenerateGameObject
     NodeOldVarialeName: 
-    SelectedComponentIndex: 2
+    SelectedComponentIndex: 0

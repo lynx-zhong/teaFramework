@@ -1,23 +1,26 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
+using UnityEditor.Callbacks;
+using System.Reflection;
+using UnityEngine.UI;
 using System.Text;
 using UnityEditor;
-using UnityEditor.Callbacks;
 using UnityEngine;
-using UnityEngine.UI;
+using System.IO;
+using System;
+using System.Text.RegularExpressions;
 
 namespace CodeGenetate
 {
     // TODO 根节点添加导出标记不合适
     // 只能在 Project文件夹下导出
-    // 文件存在 改文件代码
+    // 文件存在 改文件代码、
+    // 禁用组件没有变更 
 
     public class CodeGenerateFunc
     {
         #region 命名定义
-        static string fieldAutoGenStartMark = "    // file auto generate start";
-        static string fieldAutoGenEndMark = "    // file auto generate end";
+        static string fieldAutoGenStartMark = "    // field auto generate start";
+        static string fieldAutoGenEndMark = "    // field auto generate end";
 
         static string bindFucntionStartMark = "        // bind function start";
         static string bindFucntionEndMark = "        // bind function end";
@@ -32,47 +35,77 @@ namespace CodeGenetate
 
 
         static string CodeFloder = @"Scripts\GameLogic\UI";
-        static StringBuilder codeStr;
-        static GameObject exportGo;
+        static StringBuilder codeFullStr;
+        static string exportCodeCacheKey = "exportCodeCacheKey";
 
-        public static void Generate(Transform exportGoTransform)
+        public static void Generate(Transform exportTrans)
         {
-            exportGo = exportGoTransform.gameObject;
-
-            List<CodeGenerateNodeBind> codeGenerateNodes = GetAllExportInfo(exportGoTransform);
-            string goPath = AssetDatabase.GetAssetPath(exportGoTransform);
-            if (string.IsNullOrEmpty(goPath))
+            //
+            string path = AssetDatabase.GetAssetPath(exportTrans);
+            PlayerPrefs.SetString(exportCodeCacheKey, path);
+            if (string.IsNullOrEmpty(path))
             {
                 Debug.LogError("只能在 project 文件夹下导出");
                 return;
             }
-            string floderName = Path.GetDirectoryName(goPath);
+
+            //
+            string floderName = Path.GetDirectoryName(path);
             floderName = Path.GetFileName(floderName);
+            string directoryPath = Path.Combine(Application.dataPath, CodeFloder, floderName);
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
 
             //
-            codeStr = new StringBuilder();
-            codeStr.AppendLine("using UnityEngine;");
-            codeStr.AppendLine("using UnityEngine.UI;");
-            codeStr.AppendLine();
-            codeStr.AppendLine($"public class {exportGoTransform.name}");
-            codeStr.AppendLine("{");
+            string fileFullPath = Path.Combine(directoryPath, exportTrans.name + ".txt");
+            if (File.Exists(fileFullPath))
+            {
+                string fileInfo = File.ReadAllText(fileFullPath);
+                codeFullStr = new StringBuilder(fileInfo);
+            }
+            else
+                codeFullStr = new StringBuilder();
 
             //
-            WriteField(codeGenerateNodes);
+            WriteStringBuilder(exportTrans, fileFullPath);
 
             //
-            WriteInit(codeGenerateNodes);
+            ExportCodeFile(fileFullPath);
+        }
+
+        static void WriteStringBuilder(Transform exportTrans, string fileFullPath)
+        {
+            List<CodeGenerateNodeBind> codeGenerateNodes = GetAllExportInfo(exportTrans);
+            bool fileExists = File.Exists(fileFullPath);
 
             //
-            WriteFunction(codeGenerateNodes);
+            if (!fileExists)
+            {
+                codeFullStr = new StringBuilder();
+                codeFullStr.AppendLine("using UnityEngine;");
+                codeFullStr.AppendLine("using UnityEngine.UI;");
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine($"public class {exportTrans.name} : MonoBehaviour");
+                codeFullStr.AppendLine("{");
+            }
 
             //
-            WriteUnInit(codeGenerateNodes);
-
-            codeStr.AppendLine("}");
+            WriteField(codeGenerateNodes, fileExists);
 
             //
-            ExportCodeFile(floderName, exportGoTransform.name);
+            WriteInit(codeGenerateNodes, fileExists);
+
+            //
+            WriteFunction(codeGenerateNodes, fileExists);
+
+            //
+            WriteUnInit(codeGenerateNodes, fileExists);
+
+            //
+            // if (!fileExists)
+            // {
+            codeFullStr.AppendLine("}");
+            // }
         }
 
         static List<CodeGenerateNodeBind> GetAllExportInfo(Transform exportTrans)
@@ -102,9 +135,10 @@ namespace CodeGenetate
             return codeGenerates;
         }
 
-        static void WriteField(List<CodeGenerateNodeBind> codeGenerateNodes)
+        static void WriteField(List<CodeGenerateNodeBind> codeGenerateNodes, bool fileExists)
         {
-            codeStr.AppendLine(fieldAutoGenStartMark);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(fieldAutoGenStartMark);
 
             for (int i = 0; i < codeGenerateNodes.Count; i++)
             {
@@ -113,92 +147,127 @@ namespace CodeGenetate
                 for (int j = 0; j < exportComponents.Count; j++)
                 {
                     ComponentStruct componentStruct = exportComponents[j];
-                    codeStr.AppendLine($"    public {componentStruct.ComponentType.Name} {componentStruct.VariableName};");
+                    stringBuilder.AppendLine($"    public {componentStruct.ComponentType.Name} {componentStruct.VariableName};");
                 }
             }
 
-            codeStr.AppendLine(fieldAutoGenEndMark);
-            codeStr.AppendLine();
+            stringBuilder.AppendLine(fieldAutoGenEndMark);
+            stringBuilder.AppendLine();
+
+            RegexReplace(fileExists, stringBuilder, fieldAutoGenStartMark, fieldAutoGenEndMark);
         }
 
-        private static void WriteInit(List<CodeGenerateNodeBind> allCodeGenerateNodes)
+        private static void WriteInit(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
         {
-            codeStr.AppendLine();
-            codeStr.AppendLine("    private void Start()");
-            codeStr.AppendLine("    {");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("    private void Start()");
+            stringBuilder.AppendLine("    {");
 
             //
             List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
             if (bindFunctions.Count > 0)
             {
-                codeStr.AppendLine(bindFucntionStartMark);
+                stringBuilder.AppendLine(bindFucntionStartMark);
 
                 //
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
                     if (bindFunctions[i].ComponentType == typeof(Button))
                     {
-                        codeStr.AppendLine($"        {bindFunctions[i].VariableName}.onClick.AddListener(On{bindFunctions[i].VariableName}ButtonClick);");
+                        stringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.AddListener(On{bindFunctions[i].VariableName}ButtonClick);");
                     }
                 }
 
-                codeStr.AppendLine(bindFucntionEndMark);
+                stringBuilder.AppendLine(bindFucntionEndMark);
             }
 
             //
-            codeStr.AppendLine("    }");
+            stringBuilder.AppendLine("    }");
+
+            RegexReplace(fileExists, stringBuilder, bindFucntionStartMark, bindFucntionEndMark);
         }
 
-        static void WriteFunction(List<CodeGenerateNodeBind> allCodeGenerateNodes)
+        static void WriteFunction(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
         {
             //
             List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
             if (bindFunctions.Count == 0)
                 return;
 
-            //
-            codeStr.AppendLine();
-            codeStr.AppendLine(functionAutoGenStartMark);
-
-            for (int i = 0; i < bindFunctions.Count; i++)
+            if (!fileExists)
             {
-                codeStr.AppendLine();
-                codeStr.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
-                codeStr.AppendLine("    {");
-                codeStr.AppendLine();
-                codeStr.AppendLine("    }");
-            }
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine();
+                stringBuilder.AppendLine(functionAutoGenStartMark);
 
-            codeStr.AppendLine();
-            codeStr.AppendLine(functionAutoGenEndMark);
-        }
-
-        private static void WriteUnInit(List<CodeGenerateNodeBind> allCodeGenerateNodes)
-        {
-            codeStr.AppendLine();
-            codeStr.AppendLine("    private void OnDestory()");
-            codeStr.AppendLine("    {");
-
-            //
-            List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
-            if (bindFunctions.Count > 0)
-            {
-                codeStr.AppendLine(unBindFunctionStartMark);
-
-                //
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
-                    if (bindFunctions[i].ComponentType == typeof(Button))
+                    stringBuilder.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
+                    stringBuilder.AppendLine("    {");
+                    stringBuilder.AppendLine();
+                    stringBuilder.AppendLine("    }");
+                    stringBuilder.AppendLine();
+                }
+                stringBuilder.AppendLine(functionAutoGenEndMark);
+                codeFullStr.Append(stringBuilder);
+            }
+            else
+            {
+                for (int i = 0; i < bindFunctions.Count; i++)
+                {
+                    codeFullStr.Replace(bindFunctions[i].NodeOldVarialeName, bindFunctions[i].VariableName);
+                }
+            }
+        }
+
+        private static void WriteUnInit(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
+        {
+            //
+            List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
+
+            if (!fileExists)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine();
+                stringBuilder.AppendLine("    private void OnDestroy()");
+                stringBuilder.AppendLine("    {");
+
+                if (bindFunctions.Count > 0)
+                {
+                    stringBuilder.AppendLine(unBindFunctionStartMark);
+
+                    //
+                    for (int i = 0; i < bindFunctions.Count; i++)
                     {
-                        codeStr.AppendLine($"        {bindFunctions[i].VariableName}.onClick.AddListener(On{bindFunctions[i].VariableName}ButtonClick);");
+                        if (bindFunctions[i].ComponentType == typeof(Button))
+                        {
+                            stringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.RemoveListener(On{bindFunctions[i].VariableName}ButtonClick);");
+                        }
                     }
+
+                    stringBuilder.AppendLine(unBindFunctionEndMark);
                 }
 
-                codeStr.AppendLine(unBindFunctionEndMark);
+                //
+                stringBuilder.AppendLine("    }");
             }
+            else
+            {
+                RegexReplace(fileExists, stringBuilder, bindFucntionStartMark, bindFucntionEndMark);
+            }
+        }
 
-            //
-            codeStr.AppendLine("    }");
+        static void RegexReplace(bool fileExists, StringBuilder appendStringBuilder, string replaceStartMark, string replaceEndMark)
+        {
+            if (!fileExists)
+                codeFullStr.Append(appendStringBuilder);
+            else
+            {
+                string pattern = @$"{replaceStartMark}([\s\S]*?){replaceEndMark}";
+                string modifiedString = Regex.Replace(codeFullStr.ToString(), pattern, appendStringBuilder.ToString());
+                codeFullStr = new StringBuilder(modifiedString);
+            }
         }
 
         static List<ComponentStruct> GetBindFunctionComponent(List<CodeGenerateNodeBind> allCodeGenerateNodes)
@@ -221,14 +290,8 @@ namespace CodeGenetate
             return needExportComponents;
         }
 
-        private static void ExportCodeFile(string floderName, string fileName)
+        private static void ExportCodeFile(string fileFullPath)
         {
-            string directoryPath = Path.Combine(Application.dataPath, CodeFloder, floderName);
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
-
-            string fileFullPath = Path.Combine(directoryPath, fileName + ".cs");
-
             if (File.Exists(fileFullPath))
             {
                 File.Delete(fileFullPath);
@@ -237,7 +300,7 @@ namespace CodeGenetate
             if (!File.Exists(fileFullPath))
             {
                 StreamWriter codeFile = File.CreateText(fileFullPath);
-                codeFile.Write(codeStr);
+                codeFile.Write(codeFullStr);
                 codeFile.Flush();
                 codeFile.Dispose();
                 codeFile.Close();
@@ -249,9 +312,63 @@ namespace CodeGenetate
         [DidReloadScripts]
         static void OnScriptsReloaded()
         {
-            Debug.Log("-----------.  ");
-            Type scriptType = Type.GetType($"CodeGenerate,Assembly-CSharp");
-            scriptType = CustomScriptUtility.CreateScript("MyMonoBehaviour", scriptCode);
+            return;
+            string path = PlayerPrefs.GetString(exportCodeCacheKey);
+            PlayerPrefs.SetString(exportCodeCacheKey, string.Empty);
+            if (string.IsNullOrEmpty(path))
+                return;
+
+            string exportCodeName = Path.GetFileNameWithoutExtension(path);
+            GameObject exportGo = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            exportGo = PrefabUtility.InstantiatePrefab(exportGo) as GameObject;
+
+            //
+            Assembly assembly = Assembly.Load("Assembly-CSharp");
+            Type type = assembly.GetType(exportCodeName);
+            Component component = exportGo.GetComponent(type);
+            if (component == null)
+                component = exportGo.AddComponent(type);
+
+            //
+            List<CodeGenerateNodeBind> generateNodeBinds = GetAllExportInfo(exportGo.transform);
+            Dictionary<string, TypeGameObject> componentDic = new Dictionary<string, TypeGameObject>();
+            foreach (var components in generateNodeBinds)
+            {
+                foreach (var itemComponent in components.exportComponents)
+                {
+                    if (!componentDic.ContainsKey(itemComponent.VariableName))
+                    {
+                        TypeGameObject typeGameObject = new TypeGameObject()
+                        {
+                            type = itemComponent.ComponentType,
+                            go = components.gameObject,
+                        };
+                        componentDic.Add(itemComponent.VariableName, typeGameObject);
+                    }
+                }
+            }
+
+            //
+            FieldInfo[] fieldInfos = type.GetFields(BindingFlags.Instance | BindingFlags.Public);
+            for (int i = 0; i < fieldInfos.Length; i++)
+            {
+                TypeGameObject bindType = componentDic[fieldInfos[i].Name];
+                if (bindType.type == typeof(GameObject))
+                    fieldInfos[i].SetValue(component, bindType.go);
+                else
+                    fieldInfos[i].SetValue(component, bindType.go.GetComponent(bindType.type));
+            }
+
+            //
+            PrefabUtility.SaveAsPrefabAsset(exportGo, path);
+            UnityEngine.Object.DestroyImmediate(exportGo);
+            AssetDatabase.Refresh();
+        }
+
+        struct TypeGameObject
+        {
+            public Type type;
+            public GameObject go;
         }
     }
 }
