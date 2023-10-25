@@ -1,22 +1,21 @@
-using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using System.Reflection;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 using System.IO;
 using System;
-using System.Text.RegularExpressions;
-using JetBrains.Annotations;
-using System.Linq;
+
 
 namespace CodeGenetate
 {
     // TODO 根节点添加导出标记不合适
     // 只能在 Project文件夹下导出
     // 文件存在 改文件代码、
-    // 禁用组件没有变更 
+    // 增加临时文件去生成覆盖的文件，并加入git的忽略，免得覆盖掉很麻烦的东西 拿不回数据
 
     public class CodeGenerateFunc
     {
@@ -59,7 +58,7 @@ namespace CodeGenetate
                 Directory.CreateDirectory(directoryPath);
 
             //
-            string fileFullPath = Path.Combine(directoryPath, exportTrans.name + ".txt");
+            string fileFullPath = Path.Combine(directoryPath, exportTrans.name + ".cs");
 
             //
             WriteStringBuilder(exportTrans, fileFullPath);
@@ -160,15 +159,21 @@ namespace CodeGenetate
             }
 
             canReplaceStringBuilder.AppendLine(fieldAutoGenEndMark);
-            canReplaceStringBuilder.AppendLine();
 
             if (!fileExists)
+            {
+                canReplaceStringBuilder.AppendLine();
                 codeFullStr.Append(canReplaceStringBuilder);
+            }
             else
             {
                 RegexReplace(canReplaceStringBuilder, fieldAutoGenStartMark, fieldAutoGenEndMark);
+
                 foreach (ComponentStruct node in allExportComponents)
                 {
+                    if (string.IsNullOrEmpty(node.OldVarialeName))
+                        continue;
+
                     codeFullStr.Replace(node.OldVarialeName, node.VariableName);
                 }
             }
@@ -228,7 +233,7 @@ namespace CodeGenetate
             List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
             if (bindFunctions.Count > 0)
             {
-                canReplaceStringBuilder.AppendLine(bindFucntionStartMark);
+                canReplaceStringBuilder.AppendLine(unBindFunctionStartMark);
 
                 //
                 for (int i = 0; i < bindFunctions.Count; i++)
@@ -239,7 +244,7 @@ namespace CodeGenetate
                     }
                 }
 
-                canReplaceStringBuilder.AppendLine(bindFucntionEndMark);
+                canReplaceStringBuilder.AppendLine(unBindFunctionEndMark);
             }
 
             //
@@ -250,7 +255,7 @@ namespace CodeGenetate
             }
             else
             {
-                RegexReplace(canReplaceStringBuilder, bindFucntionStartMark, bindFucntionEndMark);
+                RegexReplace(canReplaceStringBuilder, unBindFunctionStartMark, unBindFunctionEndMark);
             }
         }
 
@@ -297,7 +302,7 @@ namespace CodeGenetate
 
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
-                    if (codeFullArr[0].IndexOf(bindFunctions[i].VariableName) == -1)
+                    if (codeFullArr[0].IndexOf($"private void On{bindFunctions[i].VariableName}ButtonClick()") == -1)
                     {
                         StringBuilder addStringBuilder = new StringBuilder();
                         addStringBuilder.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
@@ -305,16 +310,22 @@ namespace CodeGenetate
                         addStringBuilder.AppendLine();
                         addStringBuilder.AppendLine("    }");
                         addStringBuilder.AppendLine();
-                        codeFullArr[0] = codeFullArr[0] + addStringBuilder.ToString() ;
+                        codeFullArr[0] = codeFullArr[0] + addStringBuilder.ToString();
                     }
                 }
+
+                codeFullStr = new StringBuilder();
+                codeFullStr.Append(codeFullArr[0]);
+                codeFullStr.Append(functionAutoGenEndMark);
+                codeFullStr.Append(codeFullArr[1]);
             }
         }
 
         static void RegexReplace(StringBuilder appendStringBuilder, string replaceStartMark, string replaceEndMark)
         {
+            string appendString = appendStringBuilder.ToString().TrimEnd(new char[] { '\r', '\n' });
             string pattern = @$"{replaceStartMark}([\s\S]*?){replaceEndMark}";
-            string modifiedString = Regex.Replace(codeFullStr.ToString(), pattern, appendStringBuilder.ToString());
+            string modifiedString = Regex.Replace(codeFullStr.ToString(), pattern, appendString);
             codeFullStr = new StringBuilder(modifiedString);
         }
 
@@ -360,6 +371,18 @@ namespace CodeGenetate
         private static void SetVarialOldName(Transform exportTrans)
         {
             List<CodeGenerateNodeBind> codeGenerateNodes = GetAllExportInfo(exportTrans);
+            for (int i = 0; i < codeGenerateNodes.Count; i++)
+            {
+                CodeGenerateNodeBind codeGenerateNode = codeGenerateNodes[i];
+                for (int j = 0; j < codeGenerateNode.exportComponents.Count; j++)
+                {
+                    ComponentStruct componentStruct = codeGenerateNodes[i].exportComponents[j];
+                    componentStruct.OldVarialeName = componentStruct.VariableName;
+
+                    codeGenerateNode.exportComponents[j] = componentStruct;
+                }
+                codeGenerateNodes[i] = codeGenerateNode;
+            }
         }
 
         [DidReloadScripts]
@@ -370,7 +393,13 @@ namespace CodeGenetate
             if (string.IsNullOrEmpty(path))
                 return;
 
+            if (Selection.activeGameObject == null)
+                return;
+
             string exportCodeName = Path.GetFileNameWithoutExtension(path);
+            if (exportCodeName != Selection.activeGameObject.name)
+                return;
+
             GameObject exportGo = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             exportGo = PrefabUtility.InstantiatePrefab(exportGo) as GameObject;
 

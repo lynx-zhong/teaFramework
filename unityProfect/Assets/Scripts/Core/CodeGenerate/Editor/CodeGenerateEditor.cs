@@ -14,12 +14,6 @@ namespace CodeGenetate
         static void CodeGenerateInitializeOnLoadMethod()
         {
             EditorApplication.hierarchyWindowItemOnGUI += CodeGenerateHierarchyOnGui;
-            EditorApplication.hierarchyChanged += OnHierarchyWindowChanged;
-        }
-
-        private static void OnHierarchyWindowChanged()
-        {
-
         }
 
         private static void CodeGenerateHierarchyOnGui(int instanceID, Rect selectionRect)
@@ -39,6 +33,17 @@ namespace CodeGenetate
             GUI.color = Color.yellow;
             GUI.Label(targetRect, "\u2605");
             GUI.color = Color.white;
+        }
+    }
+
+    // [CustomEditor(typeof(CodeGenerateNodeBind))]
+    public class CodeGenerateInspector : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            target.hideFlags = HideFlags.HideInInspector | HideFlags.NotEditable;
         }
     }
 }

@@ -6,10 +6,7 @@ using CodeGenetate;
 using Unity.VisualScripting;
 using System;
 using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEditorInternal;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(RectTransform)), CanEditMultipleObjects]
 public class RectTransformInspector : Editor
@@ -222,6 +219,8 @@ public class RectTransformInspector : Editor
     private void OnBanExportButtonClick()
     {
         DestroyImmediate(target.GetComponent<CodeGenerateNodeBind>());
+        GameObject targetObject = (target as Transform).gameObject;
+        EditorUtility.SetDirty(targetObject);
     }
 
     private void CheckAndSavePrefabChanges()
