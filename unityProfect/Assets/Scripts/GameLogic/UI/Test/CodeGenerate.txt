@@ -12,14 +12,16 @@ public class CodeGenerate : MonoBehaviour
     // field auto generate end
 
 
-
-
     private void Start()
     {
+
+
         // bind function start
         asdButton.onClick.AddListener(OnasdButtonButtonClick);
         dsafffButton.onClick.AddListener(OndsafffButtonButtonClick);
         // bind function end
+
+        Code2233563GenerateGameObject.aaad = 10
     }
 
     // fucntion auto generate start
@@ -37,39 +39,9 @@ public class CodeGenerate : MonoBehaviour
 
     private void OnDestroy()
     {
-        // unbind function start
-        asdButton.onClick.RemoveListener(OnasdButtonButtonClick);
-        dsafffButton.onClick.RemoveListener(OndsafffButtonButtonClick);
-        // unbind function end
-    }
-}
-
-    private void Start()
-    {
         // bind function start
-        asdButton.onClick.AddListener(OnasdButtonButtonClick);
-        dsafffButton.onClick.AddListener(OndsafffButtonButtonClick);
-        // bind function end
-    }
-
-    // fucntion auto generate start
-    private void OnasdButtonButtonClick()
-    {
-
-    }
-
-    private void OndsafffButtonButtonClick()
-    {
-
-    }
-
-    // fucntion auto generate end
-
-    private void OnDestroy()
-    {
-        // unbind function start
         asdButton.onClick.RemoveListener(OnasdButtonButtonClick);
         dsafffButton.onClick.RemoveListener(OndsafffButtonButtonClick);
-        // unbind function end
+        // bind function end
     }
 }

@@ -76,7 +76,7 @@ namespace CodeGenetate
     public class ComponentStruct
     {
         public string VariableName;
-        public string NodeOldVarialeName;
+        public string OldVarialeName = "";
 
         [HideInInspector]
         public int SelectedComponentIndex;

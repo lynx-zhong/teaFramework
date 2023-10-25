@@ -144,7 +144,7 @@ MonoBehaviour:
   - TopLayer
   exportComponents:
   - VariableName: asdButton
-    NodeOldVarialeName: 
+    OldVarialeName: 
     SelectedComponentIndex: 4
 --- !u!1 &624443670620998226
 GameObject:
@@ -560,7 +560,7 @@ MonoBehaviour:
   - TopLayer
   exportComponents:
   - VariableName: dsafffButton
-    NodeOldVarialeName: 
+    OldVarialeName: 
     SelectedComponentIndex: 4
 --- !u!1 &5447619386824277544
 GameObject:
@@ -660,10 +660,10 @@ MonoBehaviour:
   - TopLayer
   exportComponents:
   - VariableName: hahGameObject
-    NodeOldVarialeName: 
+    OldVarialeName: 
     SelectedComponentIndex: 0
   - VariableName: hahImage
-    NodeOldVarialeName: 
+    OldVarialeName: 
     SelectedComponentIndex: 3
 --- !u!1 &6962099901354565365
 GameObject:
@@ -792,6 +792,6 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: Code2233563GenerateGameObject
-    NodeOldVarialeName: 
+  - VariableName: haode
+    OldVarialeName: 
     SelectedComponentIndex: 0

@@ -8,6 +8,8 @@ using UnityEngine;
 using System.IO;
 using System;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
+using System.Linq;
 
 namespace CodeGenetate
 {
@@ -58,19 +60,15 @@ namespace CodeGenetate
 
             //
             string fileFullPath = Path.Combine(directoryPath, exportTrans.name + ".txt");
-            if (File.Exists(fileFullPath))
-            {
-                string fileInfo = File.ReadAllText(fileFullPath);
-                codeFullStr = new StringBuilder(fileInfo);
-            }
-            else
-                codeFullStr = new StringBuilder();
 
             //
             WriteStringBuilder(exportTrans, fileFullPath);
 
             //
             ExportCodeFile(fileFullPath);
+
+            //
+            SetVarialOldName(exportTrans);
         }
 
         static void WriteStringBuilder(Transform exportTrans, string fileFullPath)
@@ -88,6 +86,11 @@ namespace CodeGenetate
                 codeFullStr.AppendLine($"public class {exportTrans.name} : MonoBehaviour");
                 codeFullStr.AppendLine("{");
             }
+            else
+            {
+                string fileInfo = File.ReadAllText(fileFullPath);
+                codeFullStr = new StringBuilder(fileInfo);
+            }
 
             //
             WriteField(codeGenerateNodes, fileExists);
@@ -102,10 +105,10 @@ namespace CodeGenetate
             WriteUnInit(codeGenerateNodes, fileExists);
 
             //
-            // if (!fileExists)
-            // {
-            codeFullStr.AppendLine("}");
-            // }
+            if (!fileExists)
+            {
+                codeFullStr.AppendLine("}");
+            }
         }
 
         static List<CodeGenerateNodeBind> GetAllExportInfo(Transform exportTrans)
@@ -137,8 +140,10 @@ namespace CodeGenetate
 
         static void WriteField(List<CodeGenerateNodeBind> codeGenerateNodes, bool fileExists)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(fieldAutoGenStartMark);
+            List<ComponentStruct> allExportComponents = new List<ComponentStruct>();
+
+            StringBuilder canReplaceStringBuilder = new StringBuilder();
+            canReplaceStringBuilder.AppendLine(fieldAutoGenStartMark);
 
             for (int i = 0; i < codeGenerateNodes.Count; i++)
             {
@@ -147,45 +152,106 @@ namespace CodeGenetate
                 for (int j = 0; j < exportComponents.Count; j++)
                 {
                     ComponentStruct componentStruct = exportComponents[j];
-                    stringBuilder.AppendLine($"    public {componentStruct.ComponentType.Name} {componentStruct.VariableName};");
+                    canReplaceStringBuilder.AppendLine($"    public {componentStruct.ComponentType.Name} {componentStruct.VariableName};");
+
+                    //
+                    allExportComponents.Add(componentStruct);
                 }
             }
 
-            stringBuilder.AppendLine(fieldAutoGenEndMark);
-            stringBuilder.AppendLine();
+            canReplaceStringBuilder.AppendLine(fieldAutoGenEndMark);
+            canReplaceStringBuilder.AppendLine();
 
-            RegexReplace(fileExists, stringBuilder, fieldAutoGenStartMark, fieldAutoGenEndMark);
+            if (!fileExists)
+                codeFullStr.Append(canReplaceStringBuilder);
+            else
+            {
+                RegexReplace(canReplaceStringBuilder, fieldAutoGenStartMark, fieldAutoGenEndMark);
+                foreach (ComponentStruct node in allExportComponents)
+                {
+                    codeFullStr.Replace(node.OldVarialeName, node.VariableName);
+                }
+            }
         }
 
         private static void WriteInit(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine("    private void Start()");
-            stringBuilder.AppendLine("    {");
+            if (!fileExists)
+            {
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine("    private void Start()");
+                codeFullStr.AppendLine("    {");
+            }
 
             //
+            StringBuilder canReplaceStringBuilder = new StringBuilder();
             List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
             if (bindFunctions.Count > 0)
             {
-                stringBuilder.AppendLine(bindFucntionStartMark);
+                canReplaceStringBuilder.AppendLine(bindFucntionStartMark);
 
                 //
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
                     if (bindFunctions[i].ComponentType == typeof(Button))
                     {
-                        stringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.AddListener(On{bindFunctions[i].VariableName}ButtonClick);");
+                        canReplaceStringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.AddListener(On{bindFunctions[i].VariableName}ButtonClick);");
                     }
                 }
 
-                stringBuilder.AppendLine(bindFucntionEndMark);
+                canReplaceStringBuilder.AppendLine(bindFucntionEndMark);
             }
 
             //
-            stringBuilder.AppendLine("    }");
+            if (!fileExists)
+            {
+                codeFullStr.Append(canReplaceStringBuilder);
+                codeFullStr.AppendLine("    }");
+            }
+            else
+            {
+                RegexReplace(canReplaceStringBuilder, bindFucntionStartMark, bindFucntionEndMark);
+            }
+        }
 
-            RegexReplace(fileExists, stringBuilder, bindFucntionStartMark, bindFucntionEndMark);
+        private static void WriteUnInit(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
+        {
+            if (!fileExists)
+            {
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine("    private void OnDestroy()");
+                codeFullStr.AppendLine("    {");
+            }
+
+            //
+            StringBuilder canReplaceStringBuilder = new StringBuilder();
+            List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
+            if (bindFunctions.Count > 0)
+            {
+                canReplaceStringBuilder.AppendLine(bindFucntionStartMark);
+
+                //
+                for (int i = 0; i < bindFunctions.Count; i++)
+                {
+                    if (bindFunctions[i].ComponentType == typeof(Button))
+                    {
+                        canReplaceStringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.RemoveListener(On{bindFunctions[i].VariableName}ButtonClick);");
+                    }
+                }
+
+                canReplaceStringBuilder.AppendLine(bindFucntionEndMark);
+            }
+
+            //
+            if (!fileExists)
+            {
+                codeFullStr.Append(canReplaceStringBuilder);
+                codeFullStr.AppendLine("    }");
+            }
+            else
+            {
+                RegexReplace(canReplaceStringBuilder, bindFucntionStartMark, bindFucntionEndMark);
+            }
         }
 
         static void WriteFunction(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
@@ -193,81 +259,63 @@ namespace CodeGenetate
             //
             List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
             if (bindFunctions.Count == 0)
+            {
+                codeFullStr.AppendLine(functionAutoGenStartMark);
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine("    // do not delete this lable");
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine(functionAutoGenEndMark);
                 return;
+            }
 
             if (!fileExists)
             {
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine();
-                stringBuilder.AppendLine(functionAutoGenStartMark);
+                codeFullStr.AppendLine();
+                codeFullStr.AppendLine(functionAutoGenStartMark);
 
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
-                    stringBuilder.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
-                    stringBuilder.AppendLine("    {");
-                    stringBuilder.AppendLine();
-                    stringBuilder.AppendLine("    }");
-                    stringBuilder.AppendLine();
+                    codeFullStr.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
+                    codeFullStr.AppendLine("    {");
+                    codeFullStr.AppendLine();
+                    codeFullStr.AppendLine("    }");
+                    codeFullStr.AppendLine();
                 }
-                stringBuilder.AppendLine(functionAutoGenEndMark);
-                codeFullStr.Append(stringBuilder);
+                codeFullStr.AppendLine(functionAutoGenEndMark);
             }
             else
             {
+                // 删除不做，危险。万一函数体有些东西很重要
+
+                // 增加
+                string[] codeFullArr = codeFullStr.ToString().Split(functionAutoGenEndMark);
+                if (codeFullArr.Length < 2)
+                {
+                    Debug.LogError($"没有找到函数标记:  {functionAutoGenEndMark}  不继续更新函数内容");
+                    return;
+                }
+
                 for (int i = 0; i < bindFunctions.Count; i++)
                 {
-                    codeFullStr.Replace(bindFunctions[i].NodeOldVarialeName, bindFunctions[i].VariableName);
-                }
-            }
-        }
-
-        private static void WriteUnInit(List<CodeGenerateNodeBind> allCodeGenerateNodes, bool fileExists)
-        {
-            //
-            List<ComponentStruct> bindFunctions = GetBindFunctionComponent(allCodeGenerateNodes);
-
-            if (!fileExists)
-            {
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine();
-                stringBuilder.AppendLine("    private void OnDestroy()");
-                stringBuilder.AppendLine("    {");
-
-                if (bindFunctions.Count > 0)
-                {
-                    stringBuilder.AppendLine(unBindFunctionStartMark);
-
-                    //
-                    for (int i = 0; i < bindFunctions.Count; i++)
+                    if (codeFullArr[0].IndexOf(bindFunctions[i].VariableName) == -1)
                     {
-                        if (bindFunctions[i].ComponentType == typeof(Button))
-                        {
-                            stringBuilder.AppendLine($"        {bindFunctions[i].VariableName}.onClick.RemoveListener(On{bindFunctions[i].VariableName}ButtonClick);");
-                        }
+                        StringBuilder addStringBuilder = new StringBuilder();
+                        addStringBuilder.AppendLine($"    private void On{bindFunctions[i].VariableName}ButtonClick()");
+                        addStringBuilder.AppendLine("    {");
+                        addStringBuilder.AppendLine();
+                        addStringBuilder.AppendLine("    }");
+                        addStringBuilder.AppendLine();
+                        codeFullArr[0] = codeFullArr[0] + addStringBuilder.ToString() ;
                     }
-
-                    stringBuilder.AppendLine(unBindFunctionEndMark);
                 }
-
-                //
-                stringBuilder.AppendLine("    }");
-            }
-            else
-            {
-                RegexReplace(fileExists, stringBuilder, bindFucntionStartMark, bindFucntionEndMark);
             }
         }
 
-        static void RegexReplace(bool fileExists, StringBuilder appendStringBuilder, string replaceStartMark, string replaceEndMark)
+        static void RegexReplace(StringBuilder appendStringBuilder, string replaceStartMark, string replaceEndMark)
         {
-            if (!fileExists)
-                codeFullStr.Append(appendStringBuilder);
-            else
-            {
-                string pattern = @$"{replaceStartMark}([\s\S]*?){replaceEndMark}";
-                string modifiedString = Regex.Replace(codeFullStr.ToString(), pattern, appendStringBuilder.ToString());
-                codeFullStr = new StringBuilder(modifiedString);
-            }
+            string pattern = @$"{replaceStartMark}([\s\S]*?){replaceEndMark}";
+            string modifiedString = Regex.Replace(codeFullStr.ToString(), pattern, appendStringBuilder.ToString());
+            codeFullStr = new StringBuilder(modifiedString);
         }
 
         static List<ComponentStruct> GetBindFunctionComponent(List<CodeGenerateNodeBind> allCodeGenerateNodes)
@@ -309,10 +357,14 @@ namespace CodeGenetate
             AssetDatabase.Refresh();
         }
 
+        private static void SetVarialOldName(Transform exportTrans)
+        {
+            List<CodeGenerateNodeBind> codeGenerateNodes = GetAllExportInfo(exportTrans);
+        }
+
         [DidReloadScripts]
         static void OnScriptsReloaded()
         {
-            return;
             string path = PlayerPrefs.GetString(exportCodeCacheKey);
             PlayerPrefs.SetString(exportCodeCacheKey, string.Empty);
             if (string.IsNullOrEmpty(path))
