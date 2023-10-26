@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ExcelExportCmd/1.0.0": {
+        "dependencies": {
+          "GemBox.Spreadsheet": "37.3.30.1189"
+        },
+        "runtime": {
+          "ExcelExportCmd.dll": {}
+        }
+      },
+      "GemBox.Spreadsheet/37.3.30.1189": {
+        "runtime": {
+          "GemBox.Spreadsheet.dll": {
+            "assemblyVersion": "37.3.30.1189",
+            "fileVersion": "37.3.30.1189"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ExcelExportCmd/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GemBox.Spreadsheet/37.3.30.1189": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,17 @@
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\ExcelExportCmd.exe
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\ExcelExportCmd.deps.json
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\ExcelExportCmd.runtimeconfig.json
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\ExcelExportCmd.dll
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\ExcelExportCmd.pdb
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.GeneratedMSBuildEditorConfig.editorconfig
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.AssemblyInfoInputs.cache
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.AssemblyInfo.cs
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.csproj.CoreCompileInputs.cache
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.dll
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\refint\ExcelExportCmd.dll
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.pdb
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.genruntimeconfig.cache
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ref\ExcelExportCmd.dll
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\bin\Debug\net6.0\GemBox.Spreadsheet.dll
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.csproj.AssemblyReference.cache
+C:\GITHUB\teaFramework\Tools\ExcelExportCmd\obj\Debug\net6.0\ExcelExportCmd.csproj.CopyComplete

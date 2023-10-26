@@ -1,38 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CodeGenerate : MonoBehaviour
+public class Aaa
 {
-    // field auto generate start
-    public GameObject aa;
-    public Button ww;
-    public Button vv;
+    #region field auto generate start
+    public Button CodeGenerateButton;
+    public Button newaaa;
     public Image dd_gaiming;
     public Button xinzengAniuNiuGassssaa;
-    // field auto generate end
+    public CanvasRenderer ButtonCanvasRenderer;
+    #endregion field auto generate end
+}
 
-
+public class CodeGenerate : Aaa
+{
     private void Start()
     {
         // bind function start
-        ww.onClick.AddListener(OnwwButtonClick);
-        vv.onClick.AddListener(OnvvButtonClick);
+        CodeGenerateButton.onClick.AddListener(OnCodeGenerateButtonButtonClick);
+        newaaa.onClick.AddListener(OnnewaaaButtonClick);
         xinzengAniuNiuGassssaa.onClick.AddListener(OnxinzengAniuNiuGassssaaButtonClick);
         // bind function end
     }
 
     // fucntion auto generate start
-    private void OnwwButtonClick()
+    private void OnCodeGenerateButtonButtonClick()
     {
 
     }
 
-    private void OnvvButtonClick()
-    {
-
-    }
-
-    private void OnxinzengAniuNiuButtonClick()
+    private void OnnewaaaButtonClick()
     {
 
     }
@@ -47,8 +44,8 @@ public class CodeGenerate : MonoBehaviour
     private void OnDestroy()
     {
         // unbind function start
-        ww.onClick.RemoveListener(OnwwButtonClick);
-        vv.onClick.RemoveListener(OnvvButtonClick);
+        CodeGenerateButton.onClick.RemoveListener(OnCodeGenerateButtonButtonClick);
+        newaaa.onClick.RemoveListener(OnnewaaaButtonClick);
         xinzengAniuNiuGassssaa.onClick.RemoveListener(OnxinzengAniuNiuGassssaaButtonClick);
         // unbind function end
     }

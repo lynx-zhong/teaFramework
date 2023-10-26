@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 4979207330840171142}
   - component: {fileID: 4052238223497269900}
   - component: {fileID: 6400968514004847757}
+  - component: {fileID: 4810026101722282981}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -379,6 +380,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4810026101722282981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212466363666002616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5127a358abe467648bafa939f845b34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRootNode: 0
+  selectedLayerIndex: 1
+  layerStringArr:
+  - BackgroundLayer
+  - NarmalLayer
+  - InfoLayer
+  - TopLayer
+  exportComponents:
+  - VariableName: newaaa
+    OldVarialeName: newaaa
+    SelectedComponentIndex: 4
 --- !u!1 &4924197674632543558
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +684,9 @@ MonoBehaviour:
   - VariableName: xinzengAniuNiuGassssaa
     OldVarialeName: xinzengAniuNiuGassssaa
     SelectedComponentIndex: 4
+  - VariableName: ButtonCanvasRenderer
+    OldVarialeName: ButtonCanvasRenderer
+    SelectedComponentIndex: 2
 --- !u!1 &5447619386824277544
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +911,7 @@ GameObject:
   - component: {fileID: 7351198142963445795}
   - component: {fileID: 3730023858072243954}
   - component: {fileID: 448643737293960254}
-  - component: {fileID: 557833063353248972}
+  - component: {fileID: 7590594423771747363}
   m_Layer: 5
   m_Name: CodeGenerate
   m_TagString: Untagged
@@ -1001,10 +1028,10 @@ MonoBehaviour:
   - InfoLayer
   - TopLayer
   exportComponents:
-  - VariableName: aa
-    OldVarialeName: aa
-    SelectedComponentIndex: 0
---- !u!114 &557833063353248972
+  - VariableName: CodeGenerateButton
+    OldVarialeName: CodeGenerateButton
+    SelectedComponentIndex: 3
+--- !u!114 &7590594423771747363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1016,11 +1043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8071330dfe8d14b98579b2b5c0d0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aa: {fileID: 6962099901354565365}
-  ww: {fileID: 581562006012026898}
-  vv: {fileID: 6400968514004847757}
+  CodeGenerateButton: {fileID: 7351198142963445795}
+  newaaa: {fileID: 6400968514004847757}
   dd_gaiming: {fileID: 980175897277359679}
-  xinzengAniuNiuGassssaa: {fileID: 0}
+  xinzengAniuNiuGassssaa: {fileID: 8553619017106075827}
+  ButtonCanvasRenderer: {fileID: 5733800675614706523}
 --- !u!1 &8040791732845245573
 GameObject:
   m_ObjectHideFlags: 0
