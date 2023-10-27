@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="GemBox.Spreadsheet">
-      <HintPath>GemBox.Spreadsheet.dll</HintPath>
-    </Reference>
+    <PackageReference Include="GemBox.Spreadsheet" Version="49.0.1509" />
   </ItemGroup>
 
 </Project>

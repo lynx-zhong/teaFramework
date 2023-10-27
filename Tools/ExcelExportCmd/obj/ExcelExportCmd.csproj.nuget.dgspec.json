@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "GemBox.Spreadsheet": {
+              "target": "Package",
+              "version": "[49.0.1509, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

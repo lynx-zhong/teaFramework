@@ -12,51 +12,117 @@ namespace ExcelExportCmd
     /// </summary>
     public class ExcelSheetData
     {
-        ExcelWorksheet excelSheet;
+        string fileName;
 
-        public Dictionary<int, HeaderData> HeaderDic = new Dictionary<int, HeaderData>();
+        Dictionary<int, string> variableNameDic = new Dictionary<int, string>();
 
-        public ExcelSheetData(ExcelWorksheet excelSheet)
+        Dictionary<int, string> variableTypeDic = new Dictionary<int, string>();
+
+        Dictionary<int, string> exportGroupDic = new Dictionary<int, string>();
+
+        Dictionary<int, string> commentDic = new Dictionary<int, string>();
+
+        Dictionary<int, Dictionary<int, ExcelCellData>> cellContent = new Dictionary<int, Dictionary<int, ExcelCellData>>();
+
+        public ExcelSheetData(ExcelWorksheet worksheet)
         {
-            this.excelSheet = excelSheet;
+            fileName = worksheet.Name;
 
-            AddHeaderData();
+            CollectHeaderData(worksheet);
+
+            CollectCellData(worksheet);
+
+            Console.WriteLine();
         }
 
-        void AddHeaderData() 
+        void CollectHeaderData(ExcelWorksheet worksheet)
         {
-            HeaderDic.Clear();
-
-            ExcelRow excelWorksheet = excelSheet.Rows[1];
-
-            for (int i = 0; i < excelWorksheet.AllocatedCells.Count; i++)
+            for (int rowNum = 0; rowNum < worksheet.Rows.Count; rowNum++)
             {
-                Console.WriteLine(excelWorksheet.AllocatedCells[i]);
+                ExcelRow row = worksheet.Rows[rowNum];
+                ExcelCell firstCell = row.AllocatedCells[0];
+
+                if (firstCell.Value == null)
+                    continue;
+
+                var fristStr = firstCell.Value.ToString();
+                if (string.IsNullOrEmpty(fristStr))
+                    continue;
+
+                Dictionary<int, string> targetDic;
+                if (fristStr.StartsWith(ExportDefine.ExportVariableNameTag))
+                    targetDic = variableNameDic;
+                else if (fristStr.StartsWith(ExportDefine.ExportVarialeTypeTag))
+                    targetDic = variableTypeDic;
+                else if (fristStr.StartsWith(ExportDefine.ExportGroupTag))
+                    targetDic = exportGroupDic;
+                else if (fristStr.StartsWith(ExportDefine.ExportCommentTag))
+                    targetDic = commentDic;
+                else
+                    continue;
+
+                for (int colNum = 1; colNum < row.AllocatedCells.Count; colNum++)
+                {
+                    ExcelCell cell = row.AllocatedCells[colNum];
+
+                    if (cell.Value == null)
+                        continue;
+
+                    var cellStr = cell.Value.ToString();
+                    if (string.IsNullOrEmpty(cellStr))
+                        continue;
+
+                    targetDic.Add(colNum, cellStr);
+                }
             }
         }
 
-        public void GetRowDataList() 
+        void CollectCellData(ExcelWorksheet worksheet)
         {
+            for (int rowNum = 0; rowNum < worksheet.Rows.Count; rowNum++)
+            {
+                Dictionary<int, ExcelCellData> rowCelldata = new Dictionary<int, ExcelCellData>();
 
+                ExcelRow row = worksheet.Rows[rowNum];
+                ExcelCell firstCell = row.AllocatedCells[0];
+                if (firstCell.Value != null)
+                {
+                    var fristStr = firstCell.Value.ToString();
+                    if (string.IsNullOrEmpty(fristStr))
+                        continue;
+
+                    if (fristStr.StartsWith(ExportDefine.ExportSpecialTag))
+                        continue;
+                }
+
+                for (int colNum = 1; colNum < row.AllocatedCells.Count; colNum++)
+                {
+                    if (variableNameDic.ContainsKey(colNum))
+                    {
+                        ExcelCell cell = row.AllocatedCells[colNum];
+
+                        string variableTypeStr = variableTypeDic.ContainsKey(colNum) ? variableTypeDic[colNum] : string.Empty;
+                        string groupStr = exportGroupDic.ContainsKey(colNum) ? exportGroupDic[colNum] : string.Empty;
+                        string commentStr = commentDic.ContainsKey(colNum) ? commentDic[colNum] : string.Empty;
+
+                        ExcelCellData cellData = new ExcelCellData(cell,rowNum, colNum, variableNameDic[colNum], variableTypeStr, groupStr, commentStr);
+                        
+                        rowCelldata.Add(colNum, cellData);
+                    }
+                }
+
+                cellContent.Add(rowNum, rowCelldata);
+            }
         }
-    }
 
-    public class HeaderData 
-    {
-        public string variableNameDic;
-        public string variableTypeDic;
-        public string variableDescriptionDic;
-    }
+        public Dictionary<int, Dictionary<int, ExcelCellData>> GetCellConent()
+        {
+            return cellContent;
+        }
 
-    public class RowData 
-    {
-        
-    }
-
-    public class CellData 
-    {
-        public string VariableName;
-        public string VariableType;
-        public string VariableValue;
+        public string GetFileName() 
+        {
+            return fileName;
+        }
     }
 }

@@ -12,8 +12,14 @@ namespace ExcelExportCmd
 
         public static string ExportEnumTag = "enum_";
 
+        public static string ExportVariableNameTag = "##var";
 
+        public static string ExportVarialeTypeTag = "##type";
 
-        public static int MaxBlankNum = 10;
+        public static string ExportGroupTag = "##group";
+
+        public static string ExportCommentTag = "##comment";
+
+        public static string ExportSpecialTag = "##";
     }
 }
