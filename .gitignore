@@ -7,3 +7,4 @@
 /unityProfect/UIElementsSchema
 /unityProfect/Assembly-CSharp.csproj
 /unityProfect/Assembly-CSharp-Editor.csproj
+*.vs
