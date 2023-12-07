@@ -10,7 +10,7 @@ using System.IO;
 using System;
 
 
-namespace CodeGenetate
+namespace CodeGenerate
 {
     // TODO 根节点添加导出标记不合适
     // 只能在 Project文件夹下导出

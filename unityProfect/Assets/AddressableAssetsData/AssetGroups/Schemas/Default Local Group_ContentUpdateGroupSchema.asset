@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
   m_Name: Default Local Group_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: c6bc0cb026e24534ea0f0f3aa74ae0dc, type: 2}
+  m_Group: {fileID: 11400000, guid: 07f3b3a13f39dd744af0a34435ecc96b, type: 2}
   m_StaticContent: 0

@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.uss?fileID=7433441132597879392&amp;guid=ee46d5f428c16314c9a16ac65dff84aa&amp;type=3#AddressableGroupSettingWindow" />
+    <ui:VisualElement name="top" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: flex-end; align-self: auto; height: auto; width: auto; flex-shrink: 1;">
+        <ui:Button text="Save" parse-escape-sequences="true" display-tooltip-when-elided="true" name="save" class="topButton" />
+    </ui:VisualElement>
+    <ui:VisualElement name="list" style="flex-grow: 1;">
+        <ui:ScrollView style="flex-grow: 1;">
+            <ui:VisualElement name="groupItem" style="flex-grow: 0; height: 60px; flex-direction: row; align-items: stretch; justify-content: flex-start; align-self: stretch; background-color: rgba(0, 0, 0, 0);">
+                <uie:ObjectField allow-scene-objects="false" />
+                <ui:EnumField type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" value="Center" />
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

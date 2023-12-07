@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using System.Reflection;
-using CodeGenetate;
+using CodeGenerate;
 using Unity.VisualScripting;
 using System;
 using System.Collections.Generic;

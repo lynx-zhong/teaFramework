@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEditor;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.SceneManagement;
-using UnityEditor.SceneManagement;
 
-namespace CodeGenetate
+namespace CodeGenerate
 {
     public class CodeGenerateHierarchy : Editor
     {

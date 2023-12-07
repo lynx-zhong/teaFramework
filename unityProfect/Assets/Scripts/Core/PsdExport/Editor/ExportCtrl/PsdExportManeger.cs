@@ -206,34 +206,7 @@ namespace PsdExport
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
-
-        static string GetPlatformName(BuildTarget target)
-        {
-            string platformName = "";
-            switch (target)
-            {
-                case BuildTarget.Android:
-                    platformName = "Android";
-                    break;
-                case BuildTarget.iOS:
-                    platformName = "iPhone";
-                    break;
-                case BuildTarget.PS4:
-                    platformName = "PS4";
-                    break;
-                case BuildTarget.XboxOne:
-                    platformName = "XboxOne";
-                    break;
-                case BuildTarget.NoTarget:
-                    platformName = "DefaultTexturePlatform";
-                    break;
-                default:
-                    platformName = "Standalone";
-                    break;
-            }
-            return platformName;
-        }
-
+        
         static void ExportPrefab(PsdRootNodeSerializer psdRootNodeSerializer)
         {
             CreateCanvas();
