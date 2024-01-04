@@ -1,6 +1,6 @@
 
  
-public class ApplocationTest : IApplicationStatus
+public class ApplocationTest : UIMediator
 {
 
 }

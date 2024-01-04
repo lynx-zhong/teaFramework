@@ -43,7 +43,7 @@ public class EditorTypeViewer : EditorWindow
     bool fold2;
 
 
-    [MenuItem("EditorGUITools/GUI 种类展示")]
+    [MenuItem("Tools/GUI 帮助/GUI 种类展示")]
     static void window()
     {
         EditorTypeViewer mybianyi = GetWindow<EditorTypeViewer>();

@@ -6,7 +6,7 @@ public class EditorStyleViewer : EditorWindow
     private Vector2 scrollPosition = Vector2.zero;
     private string search = string.Empty;
 
-    [MenuItem("EditorGUITools/GUI 风格展示")]
+    [MenuItem("Tools/GUI 帮助/GUI 风格展示")]
     public static void Init()
     {
         GetWindow<EditorStyleViewer>();

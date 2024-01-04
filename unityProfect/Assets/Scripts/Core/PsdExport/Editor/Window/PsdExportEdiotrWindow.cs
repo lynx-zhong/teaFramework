@@ -21,7 +21,7 @@ namespace PsdExport
         List<string> selectedXmlList;
 
 
-        [MenuItem("UITool/PsdExport")]
+        [MenuItem("Tools/UI Tool/PsdExport")]
         public static void ShowExample()
         {
             PsdExportEdiotrWindow wnd = GetWindow<PsdExportEdiotrWindow>("PsdExport");

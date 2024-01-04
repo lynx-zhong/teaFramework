@@ -15,7 +15,7 @@ public class EditorIconViewer : EditorWindow
 
     private static List<GUIContent> icons;
 
-    [MenuItem("EditorGUITools/GUI 展示Icon")]
+    [MenuItem("Tools/GUI 帮助/GUI 展示Icon")]
     private static void GetEditorIcons()
     {
         icons = new List<GUIContent>();
