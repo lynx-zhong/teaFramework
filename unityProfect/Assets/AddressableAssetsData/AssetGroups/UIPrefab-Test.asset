@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UIPrefab-Test
+  m_EditorClassIdentifier: 
+  m_GroupName: UIPrefab-Test
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1473c27ca4534ec4a9ec86da56f9b27b
+  m_SerializeEntries:
+  - m_GUID: fbfe16202b0a2b948ab051eb23f287b6
+    m_Address: Assets/AssetsPackage/UIPrefab/Test/UILaunch 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9527292e9be5a8748911fb753ae94009
+    m_Address: Assets/AssetsPackage/UIPrefab/Test/UILaunch.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 242185c96e279204483389901cd30fb2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a95c2b90ba206e2479a2fd80896dfd27, type: 2}
+    - {fileID: 11400000, guid: b2caae1532b3514468f5576b7f90eeb0, type: 2}

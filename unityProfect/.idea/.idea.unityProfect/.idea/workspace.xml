@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="85fd6b0a-9c98-48fb-8e1c-63fd6de6dffd" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/BundleGroupSettingScriptableObj.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tools/ExcelConvertToolGUI/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Tools/ExcelConvertToolGUI/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tools/ExcelConvertToolGUI/obj/Debug/ExcelConvertTool.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Tools/ExcelConvertToolGUI/obj/Debug/ExcelConvertTool.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/.github/FUNDING.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/README_en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/docs/_config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/docs/images/architecture.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/docs/images/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/docs/sponsor/weixin.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/docs/sponsor/zhifubao.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/CommonDef.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/CommonDef.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Config.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Config.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Il2CppCompatibleDef.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Il2CppCompatibleDef.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Runtime.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/Runtime.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/RuntimeApi.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/AssemblyManifest.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/MethodBridge_Arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/MethodBridge_Universal32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/MethodBridge_Universal64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/MethodBridge_WebGL32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/ReversePInvokeMethodStub_Arm64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/ReversePInvokeMethodStub_Universal32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/ReversePInvokeMethodStub_Universal64.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/ReversePInvokeMethodStub_WebGL32.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/generated/UnityVersion.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Engine.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Engine.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InstrinctDef.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Instruction.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Instruction.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Interpreter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Interpreter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterDefs.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterDefs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterUtil.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/InterpreterUtil.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/Interpreter_Execute.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/MemoryUtil.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/MethodBridge.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/interpreter/MethodBridge.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/AOTHomologousImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/AOTHomologousImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Assembly.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Assembly.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/BlobReader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/ClassFieldLayoutCalculator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/ClassFieldLayoutCalculator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Coff.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/ConsistentAOTHomologousImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/ConsistentAOTHomologousImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/CustomAttributeDataWriter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Image.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Image.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/InterpreterImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/InterpreterImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/MetadataDef.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/MetadataModule.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/MetadataModule.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/MetadataUtil.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/MetadataUtil.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Opcodes.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Opcodes.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/RawImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/RawImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/ReversePInvokeMethodStub.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/SuperSetAOTHomologousImage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/SuperSetAOTHomologousImage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/Tables.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/VTableSetup.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/metadata/VTableSetup.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/BasicBlockSpliter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/BasicBlockSpliter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TemporaryMemoryArena.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TemporaryMemoryArena.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/Transform.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/Transform.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TransformContext.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TransformContext.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TransformContext_CallCommon.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hybridclr-main/hybridclr/transform/TransformContext_Instinct.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/Android.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/Android/addressables_content_state.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/Android/addressables_content_state.bin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/MyTemplates.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/MyTemplates.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Built In Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Built In Data.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Default Local Group_BundledAssetGroupSchema.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Sounds_BundledAssetGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Sounds_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Sounds_ContentUpdateGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/Sounds_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/UIPrefabGroup_BundledAssetGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/UIPrefabGroup_BundledAssetGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/UIPrefabGroup_ContentUpdateGroupSchema.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Schemas/UIPrefabGroup_ContentUpdateGroupSchema.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Sounds.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Sounds.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/UIPrefabGroup.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/UIPrefabGroup.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/Font/027.fusion-pixel.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/Font/027.fusion-pixel.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/Sprites/UI/Icon/Icon.spriteatlasv2.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/Sprites/UI/Icon/Icon.spriteatlasv2.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGameOverPanel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGameOverPanel.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGamePanel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGamePanel.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGamePassPanel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGamePassPanel.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGameStartPanel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsPackage/UIPrefab/New Folder/UIGameStartPanel.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Aaasss.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Asddd.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LaunchScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LaunchScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableAutoCreateGroup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableAutoCreateGroup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableDefine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableDefine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupControl.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupControl.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupDataScriptableObj.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupDataScriptableObj.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/BundleGroupSettingScriptableObj.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.uxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Addressable/Editor/AddressableGroupSettingWindow.uxml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ApplocationLaunch.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ApplocationLaunch/ApplicationLaunch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ApplocationLaunch/ApplicationLaunch.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ApplocationLaunch/ApplicationStatusManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ApplocationLaunch/ApplicationStatusManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/PsdExport/Editor/Window/PsdExportEdiotrWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/PsdExport/Editor/Window/PsdExportEdiotrWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager/IApplicationStatus.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager/IApplicationStatus.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager/UIPrefabBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/UIManager/UIPrefabBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorIconViewer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorIconViewer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorStyleViewer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorStyleViewer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorTypeViewer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/GuiStyle/EditorTypeViewer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLogic/UnitTest/ApplocationTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameLogic/UnitTest/ApplocationTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UnityDefaultRuntimeTheme.tss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UnityDefaultRuntimeTheme.tss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AudioManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/AutoStreamingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/AutoStreamingSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ClusterInputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ClusterInputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/HybridCLRSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/MemorySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/MemorySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PackageManagerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/PresetManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimeManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/VersionControlSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VersionControlSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/XRSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/XRSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityProfect.sln" beforeDir="false" afterPath="$PROJECT_DIR$/unityProfect.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../代办.log" beforeDir="false" afterPath="$PROJECT_DIR$/../代办.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/02/3ac534dd/Directory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ca090c146634c55835b339765916e4f820000/85/6ded95ff/AssetDatabase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Application/ApplicationLaunch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.19.19/Editor/Settings/AddressableAssetSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.scriptablebuildpipeline@1.20.1/Editor/Utilities/BuildCache.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ZCfrBXwc2M2UTqMZSMfZRnqRiV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\33249\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\33249\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\33249\\AppData\\Local\\Symbols\\src&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="附加到 Unity 编辑器.附加到 Unity 编辑器">
+    <configuration name="启动 Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:\Software\Unity Editor\2021.3.25f1c1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath D:\GITHUB\teaFramework\unityProfect -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\GITHUB\teaFramework\unityProfect" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="单元测试(批处理模式)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:\Software\Unity Editor\2021.3.25f1c1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\GITHUB\teaFramework\unityProfect -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\GITHUB\teaFramework\unityProfect" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="附加到 Unity 编辑器" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="附加到 Unity 编辑器并运行" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="85fd6b0a-9c98-48fb-8e1c-63fd6de6dffd" name="更改" comment="" />
+      <created>1701931179126</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701931179126</updated>
+      <workItem from="1701931184323" duration="5621000" />
+      <workItem from="1701998741987" duration="1283000" />
+      <workItem from="1702000224831" duration="14869000" />
+      <workItem from="1702030354174" duration="1968000" />
+      <workItem from="1702033224643" duration="95000" />
+      <workItem from="1704352726496" duration="13000" />
+      <workItem from="1704352761473" duration="12665000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

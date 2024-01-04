@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84f55e9f2194801a7279b8a34f6daf4, type: 3}
+  m_Name: BundleGroupSettingConfig
+  m_EditorClassIdentifier: 
+  buildFolderList:
+  - FolderAsset: {fileID: 102900000, guid: ee6dec50eb1b56b419e2e896b60ff72c, type: 3}
+    FolderPath: Assets/AssetsPackage/UIPrefab
+    packingBuildMode: 2
+  - FolderAsset: {fileID: 102900000, guid: 33643feb4bd965643891e73d12eb721f, type: 3}
+    FolderPath: Assets/AssetsPackage/Sounds/BackgroundMusic
+    packingBuildMode: 1
+  - FolderAsset: {fileID: 102900000, guid: 1b0ee6e32b4cd2d4783999009470c0fd, type: 3}
+    FolderPath: Assets/AssetsPackage/Sounds/SoundEffects
+    packingBuildMode: 2
